@@ -1,0 +1,17 @@
+# JSON: highlighting from a Tree-sitter grammar compiled to WebAssembly. No
+# code. See docs/extensions.md#languages.
+id = "example.json"
+name = "JSON"
+version = "0.1.0"
+description = "JSON highlighting."
+api_version = "1"
+
+[engines]
+ferrite = ">=0.1.0"
+
+[[languages]]
+id = "json"
+name = "JSON"
+file_extensions = ["json", "jsonc"]
+grammar = "grammars/tree-sitter-json.wasm"
+highlights = "queries/highlights.scm"
