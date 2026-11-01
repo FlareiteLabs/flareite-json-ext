@@ -15,6 +15,7 @@ name = "JSON"
 file_extensions = ["json", "jsonc"]
 grammar = "grammars/tree-sitter-json.wasm"
 highlights = "queries/highlights.scm"
+folds = "queries/folds.scm"
 # Comments are only valid in JSONC, as in VS Code.
 line_comment = "//"
 block_comment = ["/*", "*/"]
