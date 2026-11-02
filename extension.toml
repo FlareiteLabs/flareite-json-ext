@@ -4,6 +4,7 @@ id = "example.json"
 name = "JSON"
 version = "0.1.0"
 description = "JSON highlighting."
+author = "Ferrite"
 api_version = "1"
 
 [engines]
