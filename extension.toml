@@ -1,14 +1,14 @@
 # JSON: highlighting from a Tree-sitter grammar compiled to WebAssembly. No
-# code. See docs/extensions.md#languages.
-id = "ferrite.json"
+# code. See Flareite's docs/extensions.md#languages.
+id = "flareite.json"
 name = "JSON"
 version = "0.1.0"
 description = "JSON highlighting."
-author = "Ferrite"
+author = "Flareite"
 api_version = "1"
 
 [engines]
-ferrite = ">=0.1.0"
+flareite = ">=0.1.0"
 
 [[languages]]
 id = "json"
