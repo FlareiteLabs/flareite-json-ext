@@ -1,14 +1,27 @@
-# JSON: highlighting from a Tree-sitter grammar compiled to WebAssembly. No
-# code. See Flareite's docs/extensions.md#languages.
+# JSON: highlighting from a Tree-sitter grammar compiled to WebAssembly, and
+# documents parsed for Flareite's schemas, which check them; their keys and
+# values are completed and described from what the schemas say. See
+# Flareite's docs/extensions.md#languages and #schemas.
 id = "flareite.json"
 name = "JSON"
-version = "0.1.0"
-description = "JSON highlighting."
+version = "0.2.0"
+description = "JSON highlighting, and checking, completion, and hover from schemas."
 author = "Flareite"
 api_version = "1"
+entrypoint = "target/wasm32-unknown-unknown/release/flareite_json.wasm"
+activation = ["on-language:json", "on-language:jsonc"]
 
 [engines]
 flareite = ">=0.1.0"
+
+# documents_read: reading JSON documents, to parse them for schemas.
+[permissions]
+documents_read = true
+
+[build]
+command = "cargo"
+args = ["build", "--release"]
+watch = ["src", "Cargo.toml"]
 
 [[languages]]
 id = "json"
@@ -20,3 +33,24 @@ folds = "queries/folds.scm"
 # Comments are only valid in JSONC, as in VS Code.
 line_comment = "//"
 block_comment = ["/*", "*/"]
+
+[[commands]]
+id = "flareite.json.complete"
+title = "Complete from Schemas"
+hidden = true
+
+[[commands]]
+id = "flareite.json.hover"
+title = "Describe from Schemas"
+hidden = true
+
+# JSON with comments, if another extension declares it as a language of its
+# own, is read the same.
+[[completion_providers]]
+languages = ["json", "jsonc"]
+command = "flareite.json.complete"
+trigger_characters = ["\"", ":", " "]
+
+[[hover_providers]]
+languages = ["json", "jsonc"]
+command = "flareite.json.hover"
