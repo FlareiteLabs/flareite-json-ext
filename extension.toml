@@ -4,7 +4,7 @@
 # Flareite's docs/extensions.md#languages and #schemas.
 id = "flareite.json"
 name = "JSON"
-version = "0.2.0"
+version = "0.3.0"
 description = "JSON highlighting, and checking, completion, and hover from schemas."
 author = "Flareite"
 api_version = "1"
@@ -33,6 +33,20 @@ folds = "queries/folds.scm"
 # Comments are only valid in JSONC, as in VS Code.
 line_comment = "//"
 block_comment = ["/*", "*/"]
+# Brackets and quotes typed in pairs, as in VS Code's language configuration.
+brackets = [["{", "}"], ["[", "]"]]
+auto_closing_pairs = [
+  { open = "{", close = "}", not_in = [
+    "string",
+  ] },
+  { open = "[", close = "]", not_in = [
+    "string",
+  ] },
+  { open = '"', close = '"', not_in = [
+    "string",
+    "comment",
+  ] },
+]
 
 [[commands]]
 id = "flareite.json.complete"
