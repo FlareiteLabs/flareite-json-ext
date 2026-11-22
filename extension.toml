@@ -7,6 +7,7 @@ name = "JSON"
 version = "1.0.0"
 description = "JSON highlighting, and checking, completion, and hover from schemas."
 author = "Flareite"
+icon = "icon.svg"
 api_version = "2"
 entrypoint = "target/wasm32-unknown-unknown/release/flareite_json.wasm"
 activation = ["on-language:json", "on-language:jsonc"]
